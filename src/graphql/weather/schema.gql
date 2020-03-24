@@ -1,0 +1,65 @@
+# Scalars
+scalar Date
+scalar JSON
+
+# Boilerplate
+type Info {
+  id: ID!
+  name: String!
+  description: String
+}
+
+type Location {
+  name: String
+  lat: Float
+  long: Float
+  timezone: Int
+  alert: String
+  degreetype: String
+  imagerelativeurl: String
+}
+
+type WeatherCurrent {
+  temperature: Int
+  skycode: Int
+  skytext: String
+  date: Date
+  observationtime: String
+  observationpoint: String
+  feelslike: Int
+  humidity: Int
+  winddisplay: String
+  day: String
+  shortday: String
+  windspeed: String
+  imageUrl: String
+}
+
+type WeatherDayForecast {
+  low: Int
+  high: Int
+  skycodeday: Int
+  skytextday: String
+  date: Date
+  day: String
+  shortday: String
+  precip: String
+}
+
+type WeatherReport {
+  location: Location
+  current: WeatherCurrent
+  forecast: [WeatherDayForecast]
+}
+
+enum DEGREE_TYPE {
+  F
+  C
+}
+
+# Query Root
+type Query {
+  # Boilerplate
+  info: Info
+  weather(search: String!, degreeType: DEGREE_TYPE): [WeatherReport]
+}
