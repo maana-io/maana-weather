@@ -52,14 +52,9 @@ type WeatherReport {
   forecast: [WeatherDayForecast]
 }
 
-enum DEGREE_TYPE {
-  F
-  C
-}
-
 # Query Root
 type Query {
   # Boilerplate
   info: Info
-  weather(search: String!, degreeType: DEGREE_TYPE): [WeatherReport]
+  weather(search: String!, degreeType: String): [WeatherReport]
 }
